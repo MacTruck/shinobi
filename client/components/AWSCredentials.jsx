@@ -27,7 +27,7 @@ const AWSCredentials = (props) => {
         placeholder={props.awsKeyAlias}
         onChange={e => props.updateInfo(e.target.name, e.target.value)}
       />
-      <button type="button" className="saveButton" id="credentialsBtn" onClick={() => props.submitKey('awsSecretAccessKey')}>Add New Key</button>
+      <button type="button" className="saveButton" id="credentialsBtn" onClick={() => props.packageKey()}>Add New Key</button>
       <select className="keySelection" name="awsKeyAlias" onChange={e => props.updateInfo(e.target.name, e.target.value)} >
         <option defaultValue=''> -- select key -- </option>
         {

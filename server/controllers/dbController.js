@@ -133,12 +133,13 @@ dbController.storeKey = (req, res, next) => {
     encryptedKeyObject.keyAlias = keyAlias;
   }
 
-  User.findOneAndUpdate({ username }, { $push: { keys: encryptedKeyObject } }, function (err, response) {
+  User.findOneAndUpdate({ username }, { $push: { keys: encryptedKeyObject } }, { "new": true }, function (err, response) {
     if (err) {
       console.log(`Error in dbController.storeencryptedKey: ${err}`);
       return next(err);
     } else {
       console.log(`Added encrypted key to ${username} in database`);
+      res.locals.keys = response.keys;
       return next();
     }
   });
